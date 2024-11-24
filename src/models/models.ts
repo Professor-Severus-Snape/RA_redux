@@ -1,3 +1,8 @@
+export interface IForm {
+  name: string;
+  price: string;
+}
+
 export interface IProduct {
   id: string;
   name: string;
@@ -5,5 +10,6 @@ export interface IProduct {
 }
 
 export interface IStore {
+  form: IForm;
   products: IProduct[];
 }

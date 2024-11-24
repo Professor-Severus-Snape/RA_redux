@@ -14,7 +14,7 @@ const Item = ({ product }: { product: IProduct }) => {
   };
 
   return (
-    <li className="list__item item">
+    <li className="item">
       <div className="item__product">{name}</div>
       <div className="item__price">{price}</div>
       <div className="item__btns">
