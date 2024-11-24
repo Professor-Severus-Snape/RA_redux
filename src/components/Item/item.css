@@ -1,0 +1,28 @@
+.item {
+  display: grid;
+  grid-template-columns: 4fr 2fr 1fr;
+  gap: 10px;
+
+  padding: 10px;
+  border-radius: 5px;
+
+  background-color: rgb(195, 171, 255);
+}
+
+.item:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.item__btns {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 30px;
+}
+
+.item__edit-btn {
+  cursor: pointer;
+}
+
+.item__delete-btn {
+  cursor: pointer;
+}
