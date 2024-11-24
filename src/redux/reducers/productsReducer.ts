@@ -1,6 +1,6 @@
 // пункт 3 -> создаем отдельные редьюсеры, меняем часть store в зависимости от типа action:
 import { v4 } from 'uuid';
-import { ADD_PRODUCT } from '../actions/actionTypes';
+import { ADD_PRODUCT, REMOVE_PRODUCT } from '../actions/actionTypes';
 
 // начальный массив покупок:
 const initialState = [
@@ -16,6 +16,10 @@ const productsReducer = (state = initialState, action: any) => {
     case ADD_PRODUCT: {
       const { name, price } = action.payload; // получение данных из полученного action
       return [...state, { id: v4(), name, price: Number(price) }]; // изменение части store
+    }
+    case REMOVE_PRODUCT: {
+      const { id } = action.payload; // получение данных из полученного action
+      return state.filter((product) => product.id !== id); // изменение части store
     }
     default:
       return state; // если case не сработал, часть store не меняем

@@ -9,8 +9,8 @@ export const editProductActionCreator = (someParameter: any) => {
   return { type: EDIT_PRODUCT, payload: { someParameter } };
 };
 
-export const removeProductActionCreator = (someParameter: any) => {
-  return { type: REMOVE_PRODUCT, payload: { someParameter } };
+export const removeProductActionCreator = (id: string) => {
+  return { type: REMOVE_PRODUCT, payload: { id } };
 };
 
 export const searchProductActionCreator = (someParameter: any) => {
