@@ -2,6 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   addProductActionCreator,
   changeInputActionCreator,
+  editProductActionCreator,
+  removeCurrentIdActionCreator,
   resetFormActionCreator,
 } from '../../redux/actions/actionCreators';
 import { IStore } from '../../models/models';
@@ -9,6 +11,7 @@ import './form.css';
 
 const Form = () => {
   const dispatch = useDispatch(); // используем хук на верхнем уровне
+  const currentId = useSelector((state: IStore) => state.currentId); // id редактируемой покупки
 
   // получаем из store данные полей формы по ключу form:
   const { name, price } = useSelector((state: IStore) => state.form);
@@ -21,12 +24,25 @@ const Form = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // TODO: добавить валидацию формы (преобразование цены в число - чтобы не было NaN)
-    dispatch(addProductActionCreator(name, price)); // запуск редьюсеров => изм. store => rerender
+
+    if (currentId) {
+      // если это редактируемая покупка:
+      dispatch(editProductActionCreator(currentId, name, price)); // изменение отредактированной покупки в массиве покупок (store.products)
+      dispatch(removeCurrentIdActionCreator()); // сброс текущего id
+    } else {
+      // если это новая покупка:
+      dispatch(addProductActionCreator(name, price)); // меняем массив покупок (store.products)
+    }
+
     dispatch(resetFormActionCreator()); // сброс формы
   };
 
   const handleReset = () => {
     dispatch(resetFormActionCreator()); // сброс формы
+
+    if (currentId) {
+      dispatch(removeCurrentIdActionCreator()); // сброс id редактируемой покупки
+    }
   };
 
   return (

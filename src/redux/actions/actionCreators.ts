@@ -3,8 +3,10 @@ import {
   ADD_PRODUCT,
   CHANGE_INPUT,
   EDIT_PRODUCT,
+  REMOVE_CURRENT_ID,
   REMOVE_PRODUCT,
   RESET_FORM,
+  SAVE_CURRENT_ID,
   SEARCH_PRODUCT,
 } from './actionTypes';
 
@@ -16,16 +18,28 @@ export const changeInputActionCreator = (name: string, value: string) => {
   return { type: CHANGE_INPUT, payload: { [name]: value } };
 };
 
-export const editProductActionCreator = (someParameter: any) => {
-  return { type: EDIT_PRODUCT, payload: { someParameter } };
+export const editProductActionCreator = (currentId: string, name: string, price: string) => {
+  return { type: EDIT_PRODUCT, payload: { currentId, name, price } };
+};
+
+export const fillFormActionCreator = (name: string, price: string) => {
+  return { type: CHANGE_INPUT, payload: { name, price } };
+};
+
+export const removeCurrentIdActionCreator = () => {
+  return { type: REMOVE_CURRENT_ID };
+};
+
+export const removeProductActionCreator = (id: string) => {
+  return { type: REMOVE_PRODUCT, payload: id };
 };
 
 export const resetFormActionCreator = () => {
   return { type: RESET_FORM };
 };
 
-export const removeProductActionCreator = (id: string) => {
-  return { type: REMOVE_PRODUCT, payload: { id } };
+export const saveCurrentIdActionCreator = (currentId: string) => {
+  return { type: SAVE_CURRENT_ID, payload: currentId };
 };
 
 export const searchProductActionCreator = (someParameter: any) => {

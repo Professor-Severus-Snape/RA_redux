@@ -1,3 +1,16 @@
+export type TCurrentId = null | string;
+
+export interface IActions<T> {
+  type: string;
+  payload?: T;
+}
+
+export interface IEditProduct {
+  currentId: string;
+  name: string;
+  price: string;
+}
+
 export interface IForm {
   name: string;
   price: string;
@@ -10,6 +23,7 @@ export interface IProduct {
 }
 
 export interface IStore {
+  currentId: TCurrentId;
   form: IForm;
   products: IProduct[];
 }
