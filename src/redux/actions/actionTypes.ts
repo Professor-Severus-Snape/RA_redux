@@ -7,4 +7,4 @@ export const REMOVE_CURRENT_ID = 'REMOVE_CURRENT_ID';
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
 export const RESET_FORM = 'RESET_FORM';
 export const SAVE_CURRENT_ID = 'SAVE_CURRENT_ID';
-export const SEARCH_PRODUCT = 'SEARCH_PRODUCT';
+export const SET_FILTER = 'SET_FILTER';

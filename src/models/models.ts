@@ -24,6 +24,7 @@ export interface IProduct {
 
 export interface IStore {
   currentId: TCurrentId;
+  filter: string;
   form: IForm;
   products: IProduct[];
 }

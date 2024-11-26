@@ -7,7 +7,7 @@ import {
   REMOVE_PRODUCT,
   RESET_FORM,
   SAVE_CURRENT_ID,
-  SEARCH_PRODUCT,
+  SET_FILTER,
 } from './actionTypes';
 
 export const addProductActionCreator = (name: string, price: string) => {
@@ -42,6 +42,6 @@ export const saveCurrentIdActionCreator = (currentId: string) => {
   return { type: SAVE_CURRENT_ID, payload: currentId };
 };
 
-export const searchProductActionCreator = (someParameter: any) => {
-  return { type: SEARCH_PRODUCT, payload: { someParameter } };
+export const setFilterActionCreator = (filter: string) => {
+  return { type: SET_FILTER, payload: filter };
 };

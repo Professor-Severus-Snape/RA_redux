@@ -4,14 +4,26 @@ import Item from '../Item/Item';
 import './list.css';
 
 const List = () => {
-  // получаем из store массив покупок по ключу products:
-  const products = useSelector((state: IStore) => state.products);
+  const products = useSelector((state: IStore) => state.products); // массив всех покупок
+  const filter = useSelector((state: IStore) => state.filter); // фильтр
 
-  const items = products.map((product) => (
+  const filteredList = filter
+    ? products.filter((product) => product.name.toLowerCase().includes(`${filter}`.toLowerCase()))
+    : products;
+
+  const items = filteredList.map((product) => (
     <Item key={product.id} product={product} />
   ));
 
-  return <ul className="list">{items}</ul>;
+  return (
+    <ul className="list">
+      {items.length ? (
+        items
+      ) : (
+        <li className="not-found">Здесь пока ничего нет...</li>
+      )}
+    </ul>
+  );
 };
 
 export default List;
