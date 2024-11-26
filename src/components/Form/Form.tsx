@@ -23,7 +23,12 @@ const Form = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // TODO: добавить валидацию формы (преобразование цены в число - чтобы не было NaN)
+
+    // валидация формы (проверка преобразования цены в число - чтобы не было NaN):
+    if (isNaN(Number(price))) {
+      dispatch(changeInputActionCreator('price', '')); // очистка поля формы с ценой
+      return;
+    }
 
     if (currentId) {
       // если это редактируемая покупка:
