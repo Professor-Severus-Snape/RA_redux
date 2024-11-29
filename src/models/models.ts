@@ -16,6 +16,14 @@ export interface IForm {
   price: string;
 }
 
+export interface IInputName {
+  name: string;
+}
+
+export interface IInputPrice {
+  price: string;
+}
+
 export interface IProduct {
   id: string;
   name: string;

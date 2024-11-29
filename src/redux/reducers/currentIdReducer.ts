@@ -6,7 +6,10 @@ import { REMOVE_CURRENT_ID, SAVE_CURRENT_ID } from '../actions/actionTypes';
 const initialState = null;
 
 // редьюсер, который меняет часть store по ключу "currentId" - id редактируемой покупки:
-const currentIdReducer = (state = initialState, action: IActions<any>) => {
+const currentIdReducer = (
+  state: string | null = initialState,
+  action: IActions<string>
+) => {
   switch (action.type) {
     case SAVE_CURRENT_ID: {
       return action.payload; // изменение части store с даными из action (изменение текущего id)

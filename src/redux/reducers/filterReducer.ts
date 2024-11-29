@@ -3,10 +3,13 @@ import { IActions } from '../../models/models';
 import { SET_FILTER } from '../actions/actionTypes';
 
 // начальные данные формы:
-const initialState = '';
+const initialState: string = '';
 
 // редьюсер, который меняет часть store по ключу "form" - данные формы:
-const filterReducer = (state = initialState, action: IActions<any>) => {
+const filterReducer = (
+  state: string = initialState,
+  action: IActions<string>
+) => {
   switch (action.type) {
     case SET_FILTER:
       return action.payload; // устанавливает фильтр поиска
