@@ -1,12 +1,12 @@
-export type TCurrentId = null | string;
+export type TCurrentId = string | null;
 
-export interface IActions<T> {
-  type: string;
-  payload?: T;
-}
+// export interface IActions<T> {
+//   type: string;
+//   payload?: T;
+// }
 
 export interface IEditProduct {
-  currentId: string;
+  id: string;
   name: string;
   price: string;
 }

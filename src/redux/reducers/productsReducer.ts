@@ -1,7 +1,8 @@
 // пункт 3 -> создаем отдельные редьюсеры, меняем часть store в зависимости от типа action:
+import { PayloadAction, UnknownAction } from '@reduxjs/toolkit';
 import { v4 } from 'uuid';
 import { ADD_PRODUCT, EDIT_PRODUCT, REMOVE_PRODUCT } from '../actions/actionTypes';
-import { IActions, IProduct } from '../../models/models';
+import { IEditProduct, IForm, IProduct } from '../../models/models';
 
 // начальный массив покупок:
 const initialState: IProduct[] = [
@@ -12,28 +13,20 @@ const initialState: IProduct[] = [
 ];
 
 // редьюсер, который меняет часть store - массив покупок:
-// FIXME: почему не работает типизация ??? Как для каждого case указать тип из перечня???
-// const productsReducer = (
-//   state: IProduct[] = initialState,
-//   action: IActions<IForm | IEditProduct | string>
-// ): IProduct[] => {
-  const productsReducer = (state: IProduct[] = initialState, action: IActions<any>) => {
+const productsReducer = (
+  state: IProduct[] = initialState,
+  action: UnknownAction | PayloadAction<IForm | IEditProduct | string>
+): IProduct[] => {
   switch (action.type) {
     case ADD_PRODUCT: {
-      // if (!(action.payload instanceof Object)) {
-      //   return state;
-      // }
-      const { name, price } = action.payload; // получение данных из полученного action
+      const { name, price } = action.payload as IForm; // получение данных из полученного action
       return [...state, { id: v4(), name, price: Number(price) }]; // изменение части store
     }
     case EDIT_PRODUCT: {
-      // if (!(action.payload instanceof Object) || !action.payload.hasOwnProperty('currentId')) {
-      //   return state;
-      // }
-      const { currentId, name, price } = action.payload; // получение данных из полученного action
+      const { id, name, price } = action.payload as IEditProduct; // получение данных из полученного action
       return state.map((product) => {
-        if (product.id === currentId) {
-          return { ...product, name, price };
+        if (product.id === id) {
+          return { ...product, name, price: Number(price) };
         } else {
           return product;
         }

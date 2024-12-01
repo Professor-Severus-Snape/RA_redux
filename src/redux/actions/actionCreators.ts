@@ -18,8 +18,8 @@ export const changeInputActionCreator = (name: string, value: string) => {
   return { type: CHANGE_INPUT, payload: { [name]: value } };
 };
 
-export const editProductActionCreator = (currentId: string, name: string, price: string) => {
-  return { type: EDIT_PRODUCT, payload: { currentId, name, price } };
+export const editProductActionCreator = (id: string, name: string, price: string) => {
+  return { type: EDIT_PRODUCT, payload: { id, name, price } };
 };
 
 export const fillFormActionCreator = (name: string, price: string) => {
