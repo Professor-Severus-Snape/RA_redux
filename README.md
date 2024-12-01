@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/d179332m7a4cr9s1?svg=true)](https://ci.appveyor.com/project/Professor-Severus-Snape/ra-redux)
+
 # Redux
 
 Этот проект не предполагает взаимодействия по протоколу HTTP и наличия серверной части.
