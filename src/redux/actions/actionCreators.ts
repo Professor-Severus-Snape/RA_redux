@@ -3,6 +3,7 @@ import {
   ADD_PRODUCT,
   CHANGE_INPUT,
   EDIT_PRODUCT,
+  FILL_FORM,
   REMOVE_CURRENT_ID,
   REMOVE_PRODUCT,
   RESET_FORM,
@@ -23,7 +24,7 @@ export const editProductActionCreator = (id: string, name: string, price: string
 };
 
 export const fillFormActionCreator = (name: string, price: string) => {
-  return { type: CHANGE_INPUT, payload: { name, price } };
+  return { type: FILL_FORM, payload: { name, price } };
 };
 
 export const removeCurrentIdActionCreator = () => {
