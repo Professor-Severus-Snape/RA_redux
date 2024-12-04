@@ -32,7 +32,7 @@ export const removeCurrentIdActionCreator = () => {
 };
 
 export const removeProductActionCreator = (id: string) => {
-  return { type: REMOVE_PRODUCT, payload: id };
+  return { type: REMOVE_PRODUCT, payload: { id } };
 };
 
 export const resetFormActionCreator = () => {
